@@ -1,6 +1,6 @@
 import { getInput } from '../lib/index.js'
 
-const DAY = 0
+const DAY = 3
 const NAME = `\n\n--- Day ${DAY}: Lobby ---`
 
 /**

@@ -58,6 +58,12 @@ npm i
 npm run d01
 ```
 
+### [--- Day 2: Gift Shop ---](https://adventofcode.com/2025/day/2)
+
+```bash
+npm run d02
+```
+
 ### [--- Day 3: Lobby ---](https://adventofcode.com/2025/day/3)
 
 ```bash
