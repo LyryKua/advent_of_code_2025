@@ -69,3 +69,9 @@ npm run d02
 ```bash
 npm run d03
 ```
+
+### [--- Day 4: Printing Department ---](https://adventofcode.com/2025/day/4)
+
+```bash
+npm run d04
+```
