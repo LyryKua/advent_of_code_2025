@@ -1,11 +1,9 @@
 import {
   getAllNeighbors,
   getInput,
-  getNeighbors,
-  isArrayInclude, isElemEqual,
+  isElemEqual,
   isInside,
   parseInput,
-  printMap,
 } from '../lib/index.js'
 
 const DAY = 4
@@ -38,6 +36,38 @@ function part1(grid) {
 }
 
 /**
+ * @param grid {string[][]}
+ * @return {number}
+ */
+function part2(grid) {
+  let answer = 0
+  let flag = true
+  while (flag) {
+    flag = false
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[0].length; j++) {
+        if (!isElemEqual(grid, [i,j], '@')) {
+          continue
+        }
+        let rolls = 0
+        let neighbors = getAllNeighbors(grid, [i,j])
+        for (let neighbor of neighbors) {
+          if (isInside(grid, neighbor) && isElemEqual(grid, neighbor, '@')) {
+            rolls += 1
+          }
+        }
+        if (rolls < 4) {
+          answer += 1
+          grid[i][j] = 'x'
+          flag = true
+        }
+      }
+    }
+  }
+  return answer
+}
+
+/**
  * @param input {string}
  * @param part {number}
  * @returns {number}
@@ -48,7 +78,7 @@ function main(input, part) {
     case 1:
       return part1(grid)
     case 2:
-      return grid.length
+      return part2(grid)
     default:
       throw new Error(`Only 2 parts. There is no part ${part}`)
   }
@@ -57,16 +87,6 @@ function main(input, part) {
 console.log(NAME)
 getInput(DAY)
   .then(input => {
-    const input2 = `..@@.@@@@.
-@@@.@.@.@@
-@@@@@.@.@@
-@.@@@@..@.
-@@.@@@@.@@
-.@@@@@@@.@
-.@.@.@.@@@
-@.@@@.@@@@
-.@@@@@@@@.
-@.@.@@@.@.`
     const part1Result = main(input, 1)
     console.log('p1:', part1Result)
 
